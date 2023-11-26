@@ -1,0 +1,72 @@
+html {
+    color: white;
+    background-color: black;
+}
+
+main {
+    max-width: 800px;
+}
+
+a:link {
+    color: #0d98ff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:visited {
+    color: #bb33ff;
+}
+
+.post, .comment {
+    display: flex;
+}
+
+.left, .right {
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+    min-width: 40px;
+    margin: 0 10px;
+}
+
+.right {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.media {
+    max-width: 600px;
+}
+
+.border {
+    border: thin solid white;
+    padding: 4px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a.nsfw {
+    color: red;
+}
+
+.pad {
+    padding: 4px 0;
+}
+
+.space {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.text-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
