@@ -4,7 +4,7 @@ function main() {
     if (params.has('url')) {
         url = params.get('url');
     } else {
-        document.body.appendChild(document.createTextNode('Error: no url parameter given'));
+        window.location.replace('https://github.com/telextractor/yarf');
         return;
     }
     if (url[0] !== '/') {
