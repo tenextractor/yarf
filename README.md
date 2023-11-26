@@ -1,6 +1,6 @@
 Yet another reddit frontend with a focus on simplicity.
 
-To use, redirect https://www.reddit.com/<url> to https://telextractor.github.io/yarf/?url=/<url>. This can be automatically done with addons like [Redirector](https://github.com/einaregilsson/Redirector). Privacy Redirect does not work.
+To use, redirect https://www.reddit.com/ANY_URL to https://telextractor.github.io/yarf/?url=/ANY_URL. This can be automatically done with addons like [Redirector](https://github.com/einaregilsson/Redirector). Privacy Redirect does not work.
 
 Works using cross-site requests, so please disable tracking protection if you get errors.
 
