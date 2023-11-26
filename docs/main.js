@@ -100,16 +100,16 @@ function handleListing(listing, url, mainElement) {
     paramAfter.delete('before');
     paramAfter.set('after', listing[listing.length-1].data.name);
 
-    makeLink(mainElement, '< Previous', '/?url=' + urlObj.path + '?' + paramBefore.toString());
+    makeLink(mainElement, '< Previous', '?url=' + urlObj.path + '?' + paramBefore.toString());
     mainElement.appendChild(document.createTextNode(' '));
-    makeLink(mainElement, 'Next >', '/?url=' + urlObj.path + '?' + paramAfter.toString());
+    makeLink(mainElement, 'Next >', '?url=' + urlObj.path + '?' + paramAfter.toString());
 }
 
 function handlePost(postInfo, mainElement) {
-    const post = postStructure(mainElement, 'post border space', postInfo.score, postInfo.title, '/?url=' + postInfo.permalink, postInfo.selftext_html);
-    makeLink(post.header, postInfo.subreddit_name_prefixed, '/?url=/' + postInfo.subreddit_name_prefixed);
+    const post = postStructure(mainElement, 'post border space', postInfo.score, postInfo.title, '?url=' + postInfo.permalink, postInfo.selftext_html);
+    makeLink(post.header, postInfo.subreddit_name_prefixed, '?url=/' + postInfo.subreddit_name_prefixed);
     post.header.appendChild(document.createTextNode(' · '));
-    makeLink(post.header, postInfo.author, '/?url=/user/' + postInfo.author);
+    makeLink(post.header, postInfo.author, '?url=/user/' + postInfo.author);
     post.header.appendChild(document.createTextNode(' · ' + getTimestamp(postInfo.created_utc)));
     if (postInfo.post_hint === 'link') {
         makeLink(post.right, postInfo.url, postInfo.url);
@@ -143,7 +143,7 @@ function handleComments(listing, parent, postLink, op) {
     listing.data.children.forEach(comment => {
         if (comment.kind === 'more') {
             const commentFull = makeDiv(parent, 'comment space');
-            makeLink(commentFull, '> more replies', '/?url=' + postLink + parent.parentNode.parentNode.id + '/');
+            makeLink(commentFull, '> more replies', '?url=' + postLink + parent.parentNode.parentNode.id + '/');
         } else {
             const commentFull = postStructure(parent, 'comment space', comment.data.score, undefined, undefined, comment.data.body_html);
             commentFull.post.setAttribute('id', comment.data.id);
@@ -154,7 +154,7 @@ function handleComments(listing, parent, postLink, op) {
                 makeLink(commentFull.header, comment.data.author, '?url=/user/' + comment.data.author);
             }
             commentFull.header.appendChild(document.createTextNode(' · '));
-            makeLink(commentFull.header, getTimestamp(comment.data.created_utc), '/?url=' + comment.data.permalink);
+            makeLink(commentFull.header, getTimestamp(comment.data.created_utc), '?url=' + comment.data.permalink);
             if (comment.data.replies) {
                 const commentReplies = makeDiv(commentFull.right, 'replies');
                 handleComments(comment.data.replies, commentReplies, postLink, op);
@@ -165,9 +165,9 @@ function handleComments(listing, parent, postLink, op) {
 
 function handleComment(data, mainElement) {
     const comment = postStructure(mainElement, 'comment space', data.score, undefined, undefined, data.body_html);
-    makeLink(comment.header, data.subreddit_name_prefixed + ' (comment)', '/?url='+ data.permalink);
+    makeLink(comment.header, data.subreddit_name_prefixed + ' (comment)', '?url='+ data.permalink);
     comment.header.appendChild(document.createTextNode(' · '));
-    makeLink(comment.header, data.author, '/?url=/user/' + data.author);
+    makeLink(comment.header, data.author, '?url=/user/' + data.author);
     comment.header.appendChild(document.createTextNode(' · ' + getTimestamp(data.created_utc)));
 }
 
