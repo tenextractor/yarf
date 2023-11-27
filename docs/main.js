@@ -83,7 +83,7 @@ function handleListing(listing, url, mainElement) {
     listing.forEach(post => {
         if (post.kind === 't3') {
             if (post.data.over_18) {
-                const nsfwPost = postStructure(mainElement, 'post nsfw space', '', 'NSFW post', post.data.permalink, '');
+                const nsfwPost = postStructure(mainElement, 'post nsfw space', '', 'NSFW post', '?url=' + post.data.permalink, '');
                 nsfwPost.right.children[1].children[0].setAttribute('class', 'nsfw');
             } else handlePost(post.data, mainElement);
         } else if (post.kind === 't1') {
