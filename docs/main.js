@@ -60,7 +60,7 @@ function handlePostPage(data) {
     handlePost(postInfo, mainElement);
     const comments = data[1]['data']['children'];
     const commentsDiv = makeDiv(mainElement, 'comments');
-    makeElement('p', commentsDiv, undefined, postInfo.num_comments + ' comments', undefined);
+    makeElement('p', commentsDiv, undefined, 'Comments', undefined);
     handleComments(data[1], commentsDiv, postInfo.permalink, postInfo.author);
 }
 
@@ -115,6 +115,7 @@ function handlePost(postInfo, mainElement) {
         makeLink(post.right, postInfo.url, postInfo.url);
     }
     handleMedia(postInfo, post.right);
+    makeElement('div', post.right, undefined, postInfo.num_comments + ' comments', undefined);
 }
 
 function handleMedia(postInfo, postContent) {

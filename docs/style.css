@@ -44,7 +44,7 @@ a:visited {
 
 .border {
     border: thin solid white;
-    padding: 4px;
+    padding: 10px 5px;
 }
 
 .center {
@@ -61,8 +61,8 @@ a.nsfw {
 }
 
 .space {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .text-center {
