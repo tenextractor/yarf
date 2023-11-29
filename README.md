@@ -2,9 +2,9 @@ Yet another reddit frontend with a focus on simplicity. Work in progress.
 
 To use, redirect https://www.reddit.com/ANY_URL to https://telextractor.github.io/yarf/?url=/ANY_URL.
 
-Example: https://telextractor.github.io/yarf/?url=/r/javascript
+Example: https://www.reddit.com/r/javascript > https://telextractor.github.io/yarf/?url=/r/javascript
 
-can be automatically done with addons like [Redirector](https://github.com/einaregilsson/Redirector). Privacy Redirect does not work.
+This can be automatically done with addons like [Redirector](https://github.com/einaregilsson/Redirector). Privacy Redirect does not work.
 
 Works using cross-site requests, so please disable tracking protection if you get errors.
 
