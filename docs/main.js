@@ -117,7 +117,7 @@ function handlePost(postInfo, mainElement) {
     }
     handleMedia(postInfo, post.right);
     const footer = makeElement('div', post.right, undefined, postInfo.num_comments + ' comments · ', undefined);
-    makeLink(footer, 'share', 'https://www.reddit.com' + postInfo.permalink);
+    makeLink(footer, 'reddit link', 'https://www.reddit.com' + postInfo.permalink);
 }
 
 function handleMedia(postInfo, postContent) {
