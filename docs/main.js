@@ -111,11 +111,13 @@ function handlePost(postInfo, mainElement) {
     post.header.appendChild(document.createTextNode(' · '));
     makeLink(post.header, postInfo.author, '?url=/user/' + postInfo.author);
     post.header.appendChild(document.createTextNode(' · ' + getTimestamp(postInfo.created_utc)));
-    if (postInfo.post_hint === 'link') {
-        makeLink(post.right, postInfo.url, postInfo.url);
+    if (postInfo.post_hint === 'link' || postInfo.post_hint === 'rich:video') {
+        const link = makeLink(post.right, postInfo.url, postInfo.url);
+        link.setAttribute('class', 'space')
     }
     handleMedia(postInfo, post.right);
-    makeElement('div', post.right, undefined, postInfo.num_comments + ' comments', undefined);
+    const footer = makeElement('div', post.right, undefined, postInfo.num_comments + ' comments · ', undefined);
+    makeLink(footer, 'share', 'https://www.reddit.com' + postInfo.permalink);
 }
 
 function handleMedia(postInfo, postContent) {
