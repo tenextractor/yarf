@@ -116,6 +116,9 @@ function handlePost(postInfo, mainElement) {
         link.setAttribute('class', 'space')
     }
     handleMedia(postInfo, post.right);
+    if (postInfo.crosspost_parent_list) {
+        handlePost(postInfo.crosspost_parent_list[0], post.right);
+    }
     const footer = makeElement('div', post.right, undefined, postInfo.num_comments + ' comments · ', undefined);
     makeLink(footer, 'reddit link', 'https://www.reddit.com' + postInfo.permalink);
 }
@@ -136,7 +139,19 @@ function handleMedia(postInfo, postContent) {
     }
     if (postInfo.post_hint === 'hosted:video') {
         const video = makeElement('video', postContent, undefined, undefined, 'media center space');
-        video.setAttribute('controls', '')
+        video.setAttribute('controls', '');
+        const hlsJs = makeElement('script', postContent, undefined, undefined, undefined);
+        hlsJs.setAttribute('src', 'hls.min.js');
+        hlsJs.setAttribute('async', 'false')
+        hlsJs.addEventListener('load',() => {
+            if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = postInfo.secure_media.reddit_video.hls_url;
+            } else if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(postInfo.secure_media.reddit_video.hls_url);
+                hls.attachMedia(video);
+            }
+        }, false);
         const source = makeElement('source', video, undefined, undefined, undefined);
         source.setAttribute('src', postInfo.secure_media.reddit_video.fallback_url);
     }
