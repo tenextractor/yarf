@@ -119,7 +119,9 @@ function handlePost(postInfo, mainElement) {
     if (postInfo.crosspost_parent_list) {
         handlePost(postInfo.crosspost_parent_list[0], post.right);
     }
-    const footer = makeElement('div', post.right, undefined, postInfo.num_comments + ' comments · ', undefined);
+    const footer = makeDiv(post.right, undefined);
+    makeLink(footer, postInfo.num_comments + ' comments', '?url=' + postInfo.permalink);
+    footer.appendChild(document.createTextNode(' · '));
     makeLink(footer, 'reddit link', 'https://www.reddit.com' + postInfo.permalink);
 }
 
