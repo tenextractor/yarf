@@ -1,6 +1,6 @@
 Yet another reddit frontend with a focus on simplicity. Work in progress.
 
-To use, redirect https://www.reddit.com/ANY_URL to https://tenextractor.github.io/yarf/?url=/ANY_URL.
+To use, redirect https://www.reddit.com/ANY_URL (except https://www.reddit.com/r/ANY_SUBREDDIT/s/ANY_URL) to https://tenextractor.github.io/yarf/?url=/ANY_URL.
 
 Example: https://www.reddit.com/r/javascript > https://tenextractor.github.io/yarf/?url=/r/javascript
 
