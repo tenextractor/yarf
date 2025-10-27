@@ -4,7 +4,7 @@ function main() {
     if (params.has('url')) {
         url = params.get('url');
     } else {
-        window.location.replace('https://github.com/telextractor/yarf');
+        window.location.replace('https://github.com/tenextractor/yarf');
         return;
     }
     if (url[0] !== '/') {

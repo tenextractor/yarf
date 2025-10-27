@@ -29,7 +29,8 @@ a:visited {
 }
 
 .left {
-    min-width: 40px;
+    min-width: 1.25rem;
+    padding-right: 2px;
     margin: 0 10px;
 }
 
