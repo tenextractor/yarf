@@ -51,7 +51,34 @@ function getJson(url) {
     const params2 = new URLSearchParams(urlObj.params);
     params2.set('raw_json', '1');
     url = urlObj.path + '.json?' + params2.toString();
-    return fetch('https://www.reddit.com' + url).then(response => {return response.json()}).catch(err => {document.body.appendChild(document.createTextNode('Error'))});
+    return fetch('https://www.reddit.com' + url).then(response => {return response.json()}).catch(err => {
+        return handleRetry(url)
+    });
+}
+
+async function handleRetry(fetchUrl) {
+    if (!document.getElementById("json-error")) {
+        const msg = document.createElement("div");
+        msg.id = "json-error";
+        msg.textContent =
+        "Error fetching JSON. Please disable tracking protection, if enabled.";
+        document.body.appendChild(msg);
+    }
+
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+
+    const retries = Number(params.get("retries")) || 0;
+
+    await new Promise(r => setTimeout(r, 1000 * (retries + 1)));
+
+    if (retries < 4) {
+        params.set("retries", String(retries + 1));
+        history.replaceState(null, "", url.toString());
+        return getJson(fetchUrl);
+    }
+
+    throw new Error("Maximum number of retries exceeded");
 }
 
 function handlePostPage(data) {
